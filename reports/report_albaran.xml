@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <report id="report_albaran"
+                string="Imprimir albarán"
+                model="sale.order"
+                report_type="qweb-pdf"
+                name="print_albaran_from_confirmed_order.report_albaran_template"
+                print_report_name="'A- %s' % (object.name)"
+
+        />
+
+        <template id="report_albaran_template" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//h2[@class='mt16']//span" position="replace">
+                <span t-field="doc.name"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
