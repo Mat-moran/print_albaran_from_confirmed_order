@@ -12,6 +12,7 @@
         <template id="report_albaran_template" inherit_id="sale.report_saleorder_document">
             <xpath expr="//h2[@class='mt16']//span" position="replace">
                 <span t-field="doc.name"/>
+                <!-- No se por que no va -->
             </xpath>
         </template>
     </data>
