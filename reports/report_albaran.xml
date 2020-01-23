@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <report id="report_albaran"
+        <report id="report_albaran_template"
                 string="Imprimir albarán"
                 model="sale.order"
                 report_type="qweb-pdf"
@@ -9,11 +9,23 @@
 
         />
 
-        <template id="report_albaran_template" inherit_id="sale.report_saleorder_document">
+        <!--<template id="report_albaran_template" inherit_id="sale.report_saleorder_document" priority="True">
             <xpath expr="//h2[@class='mt16']//span" position="replace">
                 <span t-field="doc.name"/>
-                <!-- No se por que no va -->
             </xpath>
+        </template>-->
+
+        <template id="report_albaran_template" inherit_id="sale.report_saleorder">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="sale.report_saleorder_document" t-lang="doc.partner_id.lang">
+                        <xpath expr="//h2[@class='mt16']//span" position="replace">
+                            <h1>Albarán:</h1>
+                        </xpath>
+                    </t>
+                </t>
+            </t>
         </template>
+
     </data>
 </odoo>
