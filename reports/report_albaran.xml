@@ -10,11 +10,11 @@
         />
 
         <template id="report_albaran_template_document" inherit_id="sale.report_saleorder_document">
-            <xpath expr="//table[@class='table table-sm o_main_table']//thead//tr" position="replace">
-                <tr style="background-color:lightgray;">
-                    <th>Description</th>
-                    <th class="text-right">Price</th>
-                </tr>
+            <xpath expr="//h2[@class='mt16']" position="replace">
+                <h2 class="mt16">
+                    <span t-if="doc.state in ['sent']">Albarán # </span>
+                    <span t-field="doc.name"/>
+                </h2>
             </xpath>
         </template>
 
