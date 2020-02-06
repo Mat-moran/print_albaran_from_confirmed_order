@@ -12,19 +12,21 @@
         <template id="report_albaran_template_document" inherit_id="sale.report_saleorder_document">
             <xpath expr="//h2[@class='mt16']" position="replace">
                 <h2 class="mt16">
-                    <!--<span t-if="doc.get_state_picking() == 'done'">Albarán # </span>
-                    <span t-if="doc.get_state_picking() != 'done'">HOLA # </span>-->
-                    <span t-if="doc.state == 'sale'">Albarán # </span>
+                    <span t-if="doc.get_state_picking() == True">Albarán # </span>
+                    <span t-if="doc.get_state_picking() == False">Pedido # </span>
                     <span t-field="doc.name"/>
+
                 </h2>
             </xpath>
         </template>
+
 
         <template id="report_albaran_template" inherit_id="sale.report_saleorder">
             <xpath expr='//t[@t-call="sale.report_saleorder_document"]' position="replace">
                 <t t-call="print_albaran_from_confirmed_order.report_albaran_template_document" t-lang="doc.partner_id.lang"/>
             </xpath>
         </template>
+
 
     </data>
 </odoo>
